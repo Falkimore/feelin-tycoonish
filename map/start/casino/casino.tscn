@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://5de26mevsj2s" path="res://map/start/casino/Table_Vacant.png" id="5_bjm4i"]
 [ext_resource type="Texture2D" uid="uid://dakgmm1ql017p" path="res://map/start/casino/Table_Standard.png" id="6_bo60h"]
 [ext_resource type="Texture2D" uid="uid://63el1v6fqg4w" path="res://map/start/casino/cameos/Trafeus-Feelin.svg" id="7_m1473"]
-[ext_resource type="Script" path="res://map/start/trafeus_feelin.gd" id="8_mm77s"]
+[ext_resource type="Script" uid="uid://bmqfltadq22xd" path="res://map/start/trafeus_feelin.gd" id="8_mm77s"]
 [ext_resource type="Texture2D" uid="uid://bntafna06mjgd" path="res://map/start/casino/cameos/Miguel-Feelin.svg" id="9_mcf8t"]
 [ext_resource type="Texture2D" uid="uid://w64mjbx2scru" path="res://map/start/casino/cameos/woahmarbles2.svg" id="9_tedpa"]
 [ext_resource type="Script" uid="uid://n052ynpknfvm" path="res://map/start/casino/basketball.gd" id="10_dd1rw"]

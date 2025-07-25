@@ -16,6 +16,10 @@ var candash = false
 
 var spawn_pos: Vector2
 
+# this is for the hat stacking code
+@onready var hat_stack_start: Sprite2D = $Head/Hats
+@onready var hat_top: Sprite2D = hat_stack_start
+
 # runs when the player is created
 func _ready() -> void:
 	spawn_pos = position # set the spawn pos to the players default position
@@ -38,10 +42,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("player_jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
+		var hat = Sprite2D.new()
+		hat.texture = load("res://global_assets/player/hats/tophat.svg")
+		add_hat(hat)
+	
 	if Input.is_action_just_pressed("player_dash") and dashtimer <= 0 and candash:
 		$squueueuee.play()
 		dashtimer = 0.5
 		velocity = (get_global_mouse_position() - position).normalized() * DASH_SPEED
+		remove_all_hats()
 	
 	var direction := Input.get_axis("player_left", "player_right") # gets a value between -1 and 1
 	if dashtimer > 0.25:
@@ -63,7 +72,7 @@ func _physics_process(delta: float) -> void:
 	# contact me if you need any help with it though
 	
 	head.rotation = 0
-	head.look_at(get_global_mouse_position())
+	head.look_at(get_global_mouse_position() - head.offset * 0.5)
 	
 	if head.rotation_degrees > 25.0 && head.rotation_degrees < 90.0:
 		head.rotation_degrees = 25.0 
@@ -71,11 +80,27 @@ func _physics_process(delta: float) -> void:
 		head.rotation_degrees = 160.0 
 	
 	if head.rotation_degrees < -90.0 || head.rotation_degrees > 90.0:
-		head.flip_h = false
+		head.scale.x = 0.5
 		head.rotation_degrees += 180
 	else:
-		head.flip_h = true
+		head.scale.x = -0.5
 	#endregion
+
+func add_hat(hat: Sprite2D):
+	hat_top.add_child(hat)
+	
+	hat.position.x = 0
+	if hat_top != hat_stack_start:
+		hat.position.y = -hat_top.texture.get_height() * hat_top.scale.y
+	else:
+		hat.position.y = hat.texture.get_height() * -0.5
+	
+	hat_top = hat
+
+func remove_all_hats():
+	for hat in hat_stack_start.get_children():
+		hat.queue_free()
+	hat_top = hat_stack_start
 
 func _respawn_player():
 	position = spawn_pos

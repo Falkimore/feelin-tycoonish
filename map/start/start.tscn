@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dk3105wepu4p0" path="res://map/buyables/button/buyable_button.tscn" id="1_2eqjb"]
 [ext_resource type="Texture2D" uid="uid://csfkused7fqh3" path="res://map/buyables/Gurt/gurtgreen.png" id="2_0q1kr"]
-[ext_resource type="Script" path="res://map/start/gurt_buyable.gd" id="2_ap4hh"]
+[ext_resource type="Script" uid="uid://v033sxfivegl" path="res://map/start/gurt_buyable.gd" id="2_ap4hh"]
 [ext_resource type="AudioStream" uid="uid://b5vtqqalnrl20" path="res://map/buyables/Gurt/evil gurt laugh.ogg" id="3_gqkmp"]
 [ext_resource type="PackedScene" uid="uid://bj7e4cpuy2wsi" path="res://map/buyables/walker/walker.tscn" id="8_d02tw"]
 [ext_resource type="Script" uid="uid://76txqpak8igv" path="res://map/start/gurt.gd" id="8_jd16q"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://rew1fnyy15mf" path="res://map/start/casino hell sign.png" id="26_7cpad"]
 [ext_resource type="Texture2D" uid="uid://bta7xcejuxnx0" path="res://map/start/FNAF_WORLD.EXE_0x6D1D53B3.png" id="26_yg3ev"]
 [ext_resource type="AudioStream" uid="uid://xw23mswgbaal" path="res://map/start/zachSound.ogg" id="27_d5ykx"]
-[ext_resource type="Script" path="res://map/start/zach_fazbear.gd" id="27_lxd1a"]
+[ext_resource type="Script" uid="uid://j2qhohws5lnv" path="res://map/start/zach_fazbear.gd" id="27_lxd1a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtwnl"]
 size = Vector2(186, 193)
