@@ -17,8 +17,8 @@ var candash = false
 var spawn_pos: Vector2
 
 # this is for the hat stacking code
-@onready var hat_stack_start: Sprite2D = $Head/Hats
-@onready var hat_top: Sprite2D = hat_stack_start
+@onready var hat_stack_start: Node2D = $Head/Hats
+@onready var hat_top: Sprite2D = null
 
 # runs when the player is created
 func _ready() -> void:
@@ -86,21 +86,23 @@ func _physics_process(delta: float) -> void:
 		head.scale.x = -0.5
 	#endregion
 
-func add_hat(hat: Sprite2D):
-	hat_top.add_child(hat)
+func add_hat(hat: Sprite2D) -> Sprite2D:
+	if hat_top == null:
+		hat_stack_start.add_child(hat)
+		hat.position.y = hat.texture.get_height() * -0.5
+	else:
+		hat_top.add_child(hat)
+		hat.position.y = -hat_top.texture.get_height() * hat_top.scale.y
 	
 	hat.position.x = 0
-	if hat_top != hat_stack_start:
-		hat.position.y = -hat_top.texture.get_height() * hat_top.scale.y
-	else:
-		hat.position.y = hat.texture.get_height() * -0.5
-	
 	hat_top = hat
+
+	return hat
 
 func remove_all_hats():
 	for hat in hat_stack_start.get_children():
 		hat.queue_free()
-	hat_top = hat_stack_start
+	hat_top = null
 
 func _respawn_player():
 	position = spawn_pos

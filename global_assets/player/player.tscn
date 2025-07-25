@@ -25,7 +25,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_qjkh3")
 offset = Vector2(0, -54.515)
 
-[node name="Hats" type="Sprite2D" parent="Head"]
+[node name="Hats" type="Node2D" parent="Head"]
 position = Vector2(0, -133.71)
 scale = Vector2(2, 2)
 
